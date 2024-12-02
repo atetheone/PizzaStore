@@ -29,4 +29,10 @@ app.MapGet("/", () => "Bonjour Sénégal!");
 
 app.MapGet("/pizzas", async (PizzaDb db) => await db.Pizzas.ToListAsync());
 
+app.MapPost("/pizza", async (PizzaDb db, Pizza pizza) =>
+{
+	await db.Pizzas.AddAsync(pizza);
+	await db.SaveChangesAsync();
+	return Results.Created($"/pizza/{pizza.Id}", pizza);
+});
 app.Run();
