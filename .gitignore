@@ -1,0 +1,15 @@
+# Rider project files
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# ASP.NET files
+bin/
+obj/
+*.log
+*.vspscc
+*.vssscc
+.vscode/
+
