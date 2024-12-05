@@ -3,10 +3,12 @@ using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Configurer SQLite comme base de données
+var connectionString = builder.Configuration.GetConnectionString("Pizzas") ?? "Data Source=Pizzas.db";
+builder.Services.AddSqlite<PizzaDb>(connectionString);
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddDbContext<PizzaDb>(options =>
-	options.UseInMemoryDatabase("items"));
 
 builder.Services.AddSwaggerGen(c =>
 {
